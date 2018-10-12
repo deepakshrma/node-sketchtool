@@ -2,9 +2,8 @@
   "name": "node-sketch",
   "version": "1.0.0",
   "description": "",
-  "main": "node-sketchtool.js",
+  "main": "index.js",
   "bin": {
-    "sketch-helper": "sketch-helper.js",
     "node-sketchtool": "node-sketchtool.js"
   },
   "scripts": {

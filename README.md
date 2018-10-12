@@ -2,22 +2,8 @@
 Helper to extract slices from Sketch.app and help to convert svg to vector drawable.
 
 ### How to install[Bash]
-Clone and run install.sh
-
-```bash
-git clone https://github.com/deepakshrma/node-sketchtool.git
-cd node-sketch && ./install.sh
 ```
-### How to install[Node Style]
-```
-git clone https://github.com/deepakshrma/node-sketchtool.git
-cd node-sketch && npm install && npm install -g .
-```
-### How to run
-```bash
-## Run ~/Softwares/node-sketch/node-sketchtool
-## OR
-## ~/Softwares/node-sketch/node-sketchtool.js
+npm install -g deepak/node-sketch
 ```
 ### Help Print
 ```bash
@@ -34,4 +20,16 @@ Options:
   -d, --dir <dir>          Formats of the exports
   --home <home>            Sketch Home
   -h, --help               output usage information
+```
+### Require Node module
+```
+const {
+  slices,
+  svg2Vector,
+  stderr
+} = require("node-sketch");
+process.env.SKETCH_HOME = "Directory of the Sketch.app"
+slices(inputFilePath, exportDir, formats)
+  .then(()=> svg2Vector(exportDir))
+  .catch(stderr);
 ```
