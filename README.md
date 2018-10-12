@@ -5,12 +5,12 @@ Helper to extract slices from Sketch.app and help to convert svg to vector drawa
 Clone and run install.sh
 
 ```bash
-git clone ssh://git@bitbucket.sgp.dbs.com:7999/appstudio/node-sketch.git
+git clone https://github.com/deepakshrma/node-sketchtool.git
 cd node-sketch && ./install.sh
 ```
 ### How to install[Node Style]
 ```
-git clone ssh://git@bitbucket.sgp.dbs.com:7999/appstudio/node-sketch.git
+git clone https://github.com/deepakshrma/node-sketchtool.git
 cd node-sketch && npm install && npm install -g .
 ```
 ### How to run
