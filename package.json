@@ -1,0 +1,21 @@
+{
+  "name": "node-sketch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "node-sketchtool.js",
+  "bin": {
+    "sketch-helper": "sketch-helper.js",
+    "node-sketchtool": "node-sketchtool.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^2.19.0",
+    "fs-extra": "^7.0.0",
+    "svg2vectordrawable": "^2.4.0"
+  }
+}
