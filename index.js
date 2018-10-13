@@ -57,9 +57,9 @@ const svg2Vector = (dir, deleteWhenDone) => {
             return reject(`dir: ${dir} not found`);
         }
         const files = fs.readdirSync(dir).filter(hasExt('.svg'));
-        stdout("files to convert" + fileName);
         const listPromies = files.map(file => {
             const fileName = path.resolve(dir, file);
+            stdout("files to convert" + fileName);
             return new Promise((re, rj) => {
                 const fileStr = fs.readFileSync(fileName);
                 stdout("Converting " + fileName);
@@ -68,7 +68,7 @@ const svg2Vector = (dir, deleteWhenDone) => {
                         fs.writeFileSync(path.resolve(dir, fileName.slice(0, -4) + '.xml'), xmlCode, {
                             flag: 'w'
                         });
-                        if(deleteWhenDone){
+                        if (deleteWhenDone) {
                             fss.removeSync(fileName);
                         }
                         stdout("convertion done" + fileName);
