@@ -71,7 +71,7 @@ const svg2Vector = (dir, deleteWhenDone) => {
                         if (deleteWhenDone) {
                             fss.removeSync(fileName);
                         }
-                        stdout("convertion done" + fileName);
+                        stdout("conversion done" + fileName);
                         re("done");
                     }).catch(err => {
                         stderr(err);
@@ -86,5 +86,6 @@ const svg2Vector = (dir, deleteWhenDone) => {
 
 exports.slices = exportSlices;
 exports.stdout = stdout;
+exports.exec = exec;
 exports.stderr = stderr;
 exports.svg2Vector = svg2Vector;
