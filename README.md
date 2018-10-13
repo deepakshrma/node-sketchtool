@@ -3,7 +3,7 @@ Helper to extract slices from Sketch.app and help to convert svg to vector drawa
 
 ### How to install[Bash]
 ```
-npm install -g deepak/node-sketch
+npm install -g git+https://git@github.com/deepakshrma/node-sketchtool.git
 ```
 ### Help Print
 ```bash
@@ -22,6 +22,9 @@ Options:
   -h, --help               output usage information
 ```
 ### Require Node module
+```
+npm install git+https://git@github.com/deepakshrma/node-sketchtool.git
+```
 ```
 const {
   slices,

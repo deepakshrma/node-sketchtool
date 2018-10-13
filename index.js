@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 'use strict';
 const path = require("path");
 const spawn = require('child_process').spawn;
@@ -53,30 +51,33 @@ const exportSlices = (file, exportDir, formats) => {
 const hasExt = (ext) => {
     return (file) => path.extname(file) === ext;
 }
-const svg2Vector = (dir) => {
+const svg2Vector = (dir, deleteWhenDone) => {
     return new Promise((resolve, reject) => {
         if (!fs.lstatSync(dir).isDirectory()) {
             return reject(`dir: ${dir} not found`);
         }
-        const listPromies = fs.readdirSync(dir)
-            .filter(hasExt('.svg'))
-            .map(file => {
-                const fileName = path.resolve(dir, file);
-                return new Promise((re, rj) => {
-                    const fileStr = fs.readFileSync(fileName);
-                    stdout("Converting " + fileName);
-                    s2v(fileStr)
-                        .then(xmlCode => {
-                            fs.writeFileSync(path.resolve(dir, fileName.slice(0, -4) + '.xml'), xmlCode, {
-                                flag: 'w'
-                            });
-                            fss.removeSync(fileName);
-                            re("done");
-                        }).catch(err => {
-                            rj(err);
+        const files = fs.readdirSync(dir).filter(hasExt('.svg'));
+        stdout("files to convert" + fileName);
+        const listPromies = files.map(file => {
+            const fileName = path.resolve(dir, file);
+            return new Promise((re, rj) => {
+                const fileStr = fs.readFileSync(fileName);
+                stdout("Converting " + fileName);
+                s2v(fileStr)
+                    .then(xmlCode => {
+                        fs.writeFileSync(path.resolve(dir, fileName.slice(0, -4) + '.xml'), xmlCode, {
+                            flag: 'w'
                         });
-                });
+                        if(deleteWhenDone){
+                            fss.removeSync(fileName);
+                        }
+                        stdout("convertion done" + fileName);
+                        re("done");
+                    }).catch(err => {
+                        stderr(err);
+                    });
             });
+        });
         Promise.all(listPromies)
             .then(resolve)
             .catch(reject);

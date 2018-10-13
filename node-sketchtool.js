@@ -17,5 +17,5 @@ const exportDir = program.dir || "drawable"
 const formats = program.formats || "svg"
 process.env.SKETCH_HOME = program.home || process.env.SKETCH_HOME
 slices(program.file, exportDir, formats)
-  .then(() => svg2Vector(exportDir))
+  .then(() => svg2Vector(exportDir, true))
   .catch(stderr);
